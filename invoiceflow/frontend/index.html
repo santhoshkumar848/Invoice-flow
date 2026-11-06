@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InvoiceFlow</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <h1>InvoiceFlow</h1>
+  <div id="stats" class="stats"></div>
+  <div class="user"><span id="who"></span><button id="logout" class="btn ghost">Sign out</button></div>
+</header>
+<main>
+  <section class="queue">
+    <div class="drop">
+      <label class="btn">Upload invoice (PDF or .txt)<input id="file" type="file" accept=".pdf,.txt" hidden></label>
+      <details><summary>Or paste invoice text</summary>
+        <textarea id="paste" rows="6" placeholder="Vendor: ...&#10;Invoice No: ...&#10;PO Number: PO-1001"></textarea>
+        <button id="submitPaste" class="btn">Check pasted invoice</button>
+      </details>
+      <p id="msg" role="status"></p>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <ul id="list" class="list"></ul>
+  </section>
+  <section id="detail" class="detail"><p class="empty">Upload an invoice to see extracted fields, checks, and the approval route.</p></section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

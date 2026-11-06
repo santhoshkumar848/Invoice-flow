@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · InvoiceFlow</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<main style="display:block;padding:0">
+<div class="login">
+  <h1>InvoiceFlow</h1>
+  <p>Sign in to review and approve invoices.</p>
+  <label for="email">Email</label>
+  <input type="text" id="email" autocomplete="username" value="">
+  <label for="password">Password</label>
+  <input type="password" id="password" autocomplete="current-password" style="width:100%;font:inherit;padding:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:4px">
+  <p id="msg" role="alert" style="margin-top:12px"></p>
+  <button class="btn" id="go">Sign in</button>
+  <p class="hint">Demo accounts: ap@invoiceflow.com / ap123, manager@invoiceflow.com / manager123, controller@invoiceflow.com / controller123</p>
+</div>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+async function signIn() {
+  $("msg").textContent = "";
+  const r = await fetch("/api/login", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: $("email").value, password: $("password").value }) });
+  const d = await r.json();
+  if (!r.ok) { $("msg").textContent = d.detail || "Sign-in failed."; return; }
+  localStorage.setItem("token", d.token); localStorage.setItem("name", d.name);
+  location.replace("/");
+}
+$("go").onclick = signIn;
+$("password").onkeydown = (e) => e.key === "Enter" && signIn();
+</script>
+</body>
+</html>

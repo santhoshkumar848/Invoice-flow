@@ -1,0 +1,7 @@
+Vendor: Acme Steel Pvt Ltd
+Invoice No: AS-778
+Date: 2026-11-03
+PO Number: PO-1001
+Subtotal: 100000.00
+GST 15%: 15000.00
+Total: 116000.00

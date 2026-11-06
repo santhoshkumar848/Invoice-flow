@@ -1,0 +1,8 @@
+Vendor: Bright Packaging Co
+Invoice No: BP-2291
+Date: 2026-11-02
+PO Number: PO-1002
+GSTIN: 29ABCDE1234F1Z5
+Subtotal: 20000.00
+GST 18%: 3600.00
+Total: 23600.00
